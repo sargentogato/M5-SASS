@@ -1,0 +1,37 @@
+@mixin initial {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 10px 0 0 0;
+  }
+
+  h1 {
+    font-size: 3.5vw;
+    font-weight: 300;
+    color: white;
+    font-family: "Lato";
+  }
+}
+
+@mixin flex($flex) {
+  @if $flex {
+    display: flex;
+    justify-content: $center;
+    align-items: $center;
+  }
+}
+
+@mixin getChild($child, $name, $bGColor) {
+  @if type-of($child) == number {
+    &:nth-child(#{$child}) {
+      .strip_content {
+        @content;
+        animation-name: $name;
+        background-color: $bGColor;
+        animation-timing-function: $timing-function;
+      }
+    }
+  }
+}
